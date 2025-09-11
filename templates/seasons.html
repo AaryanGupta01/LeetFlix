@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select a Season</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Montserrat", sans-serif;
+      background: linear-gradient(135deg, #e50914, #0f0f1a, #1b1b2f, #8e2de2);
+      background-size: 400% 400%;
+      color: #fff;
+      animation: animated-gradient 15s ease infinite;
+    }
+
+    /* Animation Keyframes */
+    @keyframes animated-gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(40px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      animation: fadeInDown 0.6s ease-out;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+      color: #e50914;
+    }
+    
+    .navbar h1 .brand-leet {
+      color: #f5c518; /* LeetCode Yellow */
+    }
+
+    .navbar .btn {
+      background: #e50914;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .welcome-message {
+      font-weight: bold;
+    }
+
+    /* Main content container */
+    .container {
+      padding: 60px 40px;
+      min-height: calc(100vh - 200px);
+    }
+    
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(30, 30, 46, 0.8);
+      border-radius: 12px;
+      padding: 30px;
+      animation: popIn 0.8s ease-out 0.2s;
+      animation-fill-mode: backwards;
+    }
+
+    .content h2 {
+        text-align: center;
+        font-family: 'Bebas Neue', cursive;
+        font-size: 3rem;
+        letter-spacing: 2px;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .season-card {
+      background: rgba(18, 18, 18, 0.7);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 4px solid #e50914;
+      transition: transform 0.3s ease;
+    }
+    
+    .season-card:hover {
+        transform: scale(1.03);
+    }
+
+    .season-card h4 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .start-quiz-btn {
+      padding: 0.6rem 1.2rem;
+      background: #f40612;
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .start-quiz-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(244, 6, 18, 0.5);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .brand a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .brand img {
+      height: 40px;
+      width: auto;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="brand">
+      <a href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='images/lf.png') }}" alt="Logo">
+          <h1><span class="brand-leet">LEET</span>FLIX</h1>
+      </a>
+    </div>
+    <div class="user-info">
+      {% if session.user_name %}
+        <span class="welcome-message">Welcome, {{ session.user_name }}</span>
+        <a href="{{ url_for('profile_page') }}" class="btn">Profile</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login_page') }}" class="btn">Login</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+  <!-- Page Layout -->
+  <div class="container">
+    <div class="content">
+      <h2>{{ show_name }}</h2>
+      
+      <!-- Season 1 Card -->
+      <div class="season-card">
+          <h4>Season 1</h4>
+          <a href="{{ url_for('quiz', show_name=show_name, season=1) }}" class="start-quiz-btn">Start Quiz</a>
+      </div>
+      
+      <!-- Season 2 Card -->
+      <div class="season-card">
+          <h4>Season 2</h4>
+          <a href="{{ url_for('quiz', show_name=show_name, season=2) }}" class="start-quiz-btn">Start Quiz</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
+
