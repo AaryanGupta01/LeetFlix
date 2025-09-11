@@ -59,7 +59,7 @@
     .navbar h1 .brand-leet {
       color: #f5c518; /* LeetCode Yellow */
     }
-
+    
     .navbar .btn {
       background: #e50914;
       color: #fff;
@@ -75,6 +75,16 @@
     .navbar .btn:hover {
       background: #fff;
       color: #e50914;
+    }
+    
+    .user-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .welcome-message {
+        font-weight: bold;
     }
 
     /* Filter Bar */
@@ -102,6 +112,19 @@
 
     .filter-bar input[type="text"] {
       width: 350px;
+    }
+    
+    .leaderboard-btn {
+        padding: 10px 20px;
+        background: #f5c518; /* LeetCode Yellow */
+        color: #1a1a1a;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .leaderboard-btn:hover {
+        background-color: #fff;
     }
 
     /* Main content container */
@@ -182,6 +205,13 @@
       align-items: center;
       gap: 10px;
     }
+    
+    .brand a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
     .brand img {
       height: 40px;
@@ -195,10 +225,20 @@
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">
-      <img src="{{ url_for('static', filename='images/lf.png') }}" alt="Logo">
-      <h1><span class="brand-leet">LEET</span>FLIX</h1>
+      <a href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='images/lf.png') }}" alt="Logo">
+          <h1><span class="brand-leet">LEET</span>FLIX</h1>
+      </a>
     </div>
-    <a href="{{ url_for('login_page') }}" class="btn">Login</a>
+    <div class="user-info">
+        {% if session.user_name %}
+          <span class="welcome-message">Welcome, {{ session.user_name }}</span>
+          <a href="{{ url_for('profile_page') }}" class="btn">Profile</a>
+          <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        {% else %}
+          <a href="{{ url_for('login_page') }}" class="btn">Login</a>
+        {% endif %}
+    </div>
   </div>
 
   <!-- Filter Bar -->
@@ -210,6 +250,7 @@
       <option value="thriller">Thriller</option>
       <option value="sci-fi">Sci-Fi</option>
     </select>
+    <a href="{{ url_for('leaderboard') }}" class="leaderboard-btn">Leaderboard</a>
   </div>
 
 
@@ -229,7 +270,7 @@
           <img src="{{ url_for('static', filename='images/friends.jpg') }}" alt="Friends Poster">
           <div class="card-body">
             <h4>Friends</h4>
-              <a href="{{ url_for('seasons_page', show_name='Friends') }}" class="start-quiz-btn">Start Quiz</a>
+             <a href="{{ url_for('seasons_page', show_name='Friends') }}" class="start-quiz-btn">Start Quiz</a>
           </div>
       </div>
       <!-- Squid Game Card -->
@@ -237,7 +278,7 @@
           <img src="{{ url_for('static', filename='images/sg.jpg') }}" alt="Squid Game Poster">
           <div class="card-body">
             <h4>Squid Game</h4>
-            <a href="{{ url_for('quiz', show='Squid Game', season=1) }}" class="start-quiz-btn">Start Quiz</a>
+            <a href="{{ url_for('quiz', show_name='Squid Game', season=1) }}" class="start-quiz-btn">Start Quiz</a>
           </div>
       </div>
        <!-- Stranger Things Card -->

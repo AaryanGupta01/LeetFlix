@@ -14,8 +14,14 @@
   <div class="result-box">
     <h1>🎉 Quiz Finished!</h1>
     <h2>You scored {{ score }} / {{ total }}</h2>
-    <a href="{{ url_for('quiz') }}">Play Again</a>
+    
+    <!-- Button to go home -->
     <a href="{{ url_for('home') }}">Home</a>
+
+    <!-- NEW: Conditionally show Profile button -->
+    {% if session['user'] %}
+      <a href="{{ url_for('profile_page') }}">View Profile</a>
+    {% endif %}
   </div>
 </body>
 </html>

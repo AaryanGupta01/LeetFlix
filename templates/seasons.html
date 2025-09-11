@@ -57,7 +57,7 @@
     }
     
     .navbar h1 .brand-leet {
-      color: #f5c518;
+      color: #f5c518; /* LeetCode Yellow */
     }
 
     .navbar .btn {
@@ -70,6 +70,16 @@
       font-weight: bold;
       transition: 0.3s;
       text-decoration: none;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .welcome-message {
+      font-weight: bold;
     }
 
     /* Main content container */
@@ -135,17 +145,17 @@
       box-shadow: 0 4px 15px rgba(244, 6, 18, 0.5);
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #bbb;
-    }
-
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
+    }
+    
+    .brand a {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .brand img {
@@ -160,10 +170,20 @@
   <!-- Navbar -->
   <div class="navbar">
     <div class="brand">
-      <img src="{{ url_for('static', filename='images/lf.png') }}" alt="Logo">
-      <h1><span class="brand-leet">LEET</span>FLIX</h1>
+      <a href="{{ url_for('home') }}">
+          <img src="{{ url_for('static', filename='images/lf.png') }}" alt="Logo">
+          <h1><span class="brand-leet">LEET</span>FLIX</h1>
+      </a>
     </div>
-    <a href="{{ url_for('login_page') }}" class="btn">Login</a>
+    <div class="user-info">
+      {% if session.user_name %}
+        <span class="welcome-message">Welcome, {{ session.user_name }}</span>
+        <a href="{{ url_for('profile_page') }}" class="btn">Profile</a>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login_page') }}" class="btn">Login</a>
+      {% endif %}
+    </div>
   </div>
 
 
@@ -175,24 +195,17 @@
       <!-- Season 1 Card -->
       <div class="season-card">
           <h4>Season 1</h4>
-          <a href="{{ url_for('quiz', show=show_name, season=1) }}" class="start-quiz-btn">Start Quiz</a>
+          <a href="{{ url_for('quiz', show_name=show_name, season=1) }}" class="start-quiz-btn">Start Quiz</a>
       </div>
       
       <!-- Season 2 Card -->
       <div class="season-card">
           <h4>Season 2</h4>
-          <a href="{{ url_for('quiz', show=show_name, season=2) }}" class="start-quiz-btn">Start Quiz</a>
+          <a href="{{ url_for('quiz', show_name=show_name, season=2) }}" class="start-quiz-btn">Start Quiz</a>
       </div>
-
-      <!-- You can add more seasons here dynamically in the future -->
 
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    Made with ❤️ for Netflix Fans — Practice Trivia LeetCode style
-  </footer>
 
 </body>
 </html>
