@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+  <style>
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #181825;
+      padding: 15px 30px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      border-radius: 20px;
+      font-size: 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      height: auto;
+      width: auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #ffffff;
+      padding: 10px 14px;
+      transition: background-color 0.2s ease-in;
+    }
+    .nav-links li a:hover {
+      background-color: #444;
+      border-radius: 10px;
+    }
+
+    .link {
+      color: white;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f0f1c;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bg-shape {
+      position: absolute;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+
+    .blue-circle {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at center, #5e60ff, #814aff);
+      top: -60px;
+      left: -40px;
+    }
+
+    .pink-ball {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at 30% 30%, #ca00f3, #d8068b);
+      top: -60px;
+      right: -40px;
+      box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .container {
+      text-align: center;
+      width: 300px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input {
+      background-color: transparent;
+      border: 2px solid #3b3b4f;
+      border-radius: 10px;
+      padding: 12px;
+      color: white;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #999;
+    }
+
+    button {
+      margin-top: 12px;
+      background: linear-gradient(to right, #7f5af0, #4a44f2);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    a {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: 2px solid white;
+      white-space: nowrap;
+      width: 0;
+      animation: typing 1s steps(8) forwards, blink 0.9s step-end infinite;
+      font-size: 28px;
+      color: white;
+      transform: translateX(80px);
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 8ch; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .exit {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: #444;
+      color: white;
+      cursor: pointer;
+    }
+    .exit:hover {
+      background-color: white;
+      color: black;
+      transform: rotate(180deg);
+      transition: transform 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- background decoration -->
+  <div class="bg-shape blue-circle"></div>
+  <div class="bg-shape pink-ball"></div>
+
+  <!-- Exit button -->
+  <a href="/"><button class="exit">X</button></a>
+
+  <!-- Sign In Form -->
+  <div class="container">
+    <h1 class="typewriter">Sign In.</h1>
+    <form action="/login" method="POST">
+      <input type="email" name="email" placeholder="E-mail" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Sign In.</button>
+    </form>
+    <p>Don’t have an account? <a href="/register">Register Here</a></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+</head>
+<body>
+    <h2>Question {{ question.question_id }}</h2>
+    <p>{{ question.text }}</p>
+
+    <form method="POST">
+        <input type="hidden" name="question_id" value="{{ question.question_id }}">
+        {% for opt in question.options %}
+            <div>
+                <label>
+                    <input type="radio" name="option" value="{{ opt.option_id }}">
+                    {{ opt.text }}
+                </label>
+            </div>
+        {% endfor %}
+        <button type="submit">Next</button>
+    </form>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Family Trivia Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+       <style>
+     /* --- General Body & Theme Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #100E19; /* Deep dark blue/purple */
+    background-image: radial-gradient(circle at top right, rgba(142, 45, 226, 0.2), transparent 40%),
+                      radial-gradient(circle at bottom left, rgba(229, 9, 20, 0.2), transparent 40%);
+    color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* --- Quiz Container --- */
+.quiz-container {
+    background-color: #1C1A29;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+    /* Added flexbox to ensure vertical stacking */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center aligns children horizontally */
+}
+
+/* --- Header & Question Text --- */
+.quiz-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.quiz-header h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.quiz-header h2 {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #a09fb5;
+}
+
+.question-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-align: center;
+    width: 100%;
+}
+
+/* Added to ensure form takes full width */
+.quiz-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* --- Options Styling --- */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.option {
+    display: block;
+    background-color: #333045;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.option:hover {
+    background-color: #4A4660;
+}
+
+/* Hide the default radio button */
+.option input[type="radio"] {
+    display: none;
+}
+
+/* Style the text inside the label */
+.option .option-text {
+    display: inline-block;
+    width: 100%;
+    pointer-events: none; /* Allows clicks to go through to the label */
+}
+
+/* Style for the selected option */
+.option input[type="radio"]:checked + .option-text {
+    font-weight: 700;
+}
+
+/* Using :has is modern, but for broader support, JS would be needed for complex styling. 
+   This simple effect works well. Let's add a border highlight on the checked parent label. */
+.quiz-form:has(input:checked) .option:has(input:checked) {
+    border-color: #8e2de2;
+    background-color: #4A4660;
+}
+
+
+/* --- Submit Button --- */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    /* Changed to solid red color */
+    background: #f40612;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    /* Updated shadow color to match the new button color */
+    box-shadow: 0 4px 20px rgba(244, 6, 18, 0.4);
+}
+
+
+
+    </style>
+
+</head>
+<body>
+    <main class="quiz-container">
+        <div class="quiz-header">
+            <h1>Modern Family Trivia</h1>
+            <h2>Question {{ question.question_id }}</h2>
+        </div>
+        
+        <p class="question-text">{{ question.text }}</p>
+
+        <form method="POST" class="quiz-form">
+            <input type="hidden" name="question_id" value="{{ question.question_id }}">
+            
+            <div class="options-container">
+                {% for opt in question.options %}
+                    <label class="option">
+                        <input type="radio" name="option" value="{{ opt.option_id }}" required>
+                        <span class="option-text">{{ opt.text }}</span>
+                    </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Next Question</button>
+        </form>
+    </main>
+</body>
+</html>
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Family Trivia Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+/* --- General Body & Theme Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #100E19; /* Deep dark blue/purple */
+    background-image: radial-gradient(circle at top right, rgba(142, 45, 226, 0.2), transparent 40%),
+                      radial-gradient(circle at bottom left, rgba(229, 9, 20, 0.2), transparent 40%);
+    color: #EAEAEA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* --- Quiz Container --- */
+.quiz-container {
+    background-color: #1C1A29;
+    padding: 2rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 600px;
+    /* Added flexbox to ensure vertical stacking */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center aligns children horizontally */
+}
+
+/* --- Header & Question Text --- */
+.quiz-header {
+    position: relative; /* Needed for positioning the home button */
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+    padding-top: 3rem; /* Add padding to prevent overlap with home button */
+}
+
+.quiz-header h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.quiz-header h2 {
+    font-weight: 400;
+    font-size: 1rem;
+    color: #a09fb5;
+}
+
+/* --- Home Button --- */
+.home-button {
+    position: absolute;
+    top: 2px;
+    right: -2%;
+    padding: 0.6rem 1.2rem;
+    background: #f40612; /* The requested color */
+    color: #FFFFFF; /* White text for better contrast */
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700; /* Bolder text */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.home-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(244, 6, 18, 0.5); /* A glowing shadow on hover */
+}
+
+
+.question-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    text-align: center;
+    width: 100%;
+}
+
+/* Added to ensure form takes full width */
+.quiz-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* --- Options Styling --- */
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.option {
+    display: block;
+    background-color: #333045;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.option:hover {
+    background-color: #4A4660;
+}
+
+/* Hide the default radio button */
+.option input[type="radio"] {
+    display: none;
+}
+
+/* Style the text inside the label */
+.option .option-text {
+    display: inline-block;
+    width: 100%;
+    pointer-events: none; /* Allows clicks to go through to the label */
+}
+
+/* Style for the selected option */
+.option input[type="radio"]:checked + .option-text {
+    font-weight: 700;
+}
+
+/* Using :has is modern, but for broader support, JS would be needed for complex styling. 
+   This simple effect works well. Let's add a border highlight on the checked parent label. */
+.quiz-form:has(input:checked) .option:has(input:checked) {
+    border-color: #8e2de2;
+    background-color: #4A4660;
+}
+
+
+/* --- Submit Button --- */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    /* Changed to solid red color */
+    background: #f40612;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    /* Updated shadow color to match the new button color */
+    box-shadow: 0 4px 20px rgba(244, 6, 18, 0.4);
+}
+
+
+    </style>
+
+</head>
+<body>
+    <main class="quiz-container">
+        <div class="quiz-header">
+            <a href="/" class="home-button">Home</a>
+            <h1>Modern Family Trivia</h1>
+            <h2>Question {{ question.question_id }}</h2>
+        </div>
+        
+        <p class="question-text">{{ question.text }}</p>
+
+        <form method="POST" class="quiz-form">
+            <input type="hidden" name="question_id" value="{{ question.question_id }}">
+            
+            <div class="options-container">
+                {% for opt in question.options %}
+                    <label class="option">
+                        <input type="radio" name="option" value="{{ opt.option_id }}" required>
+                        <span class="option-text">{{ opt.text }}</span>
+                    </label>
+                {% endfor %}
+            </div>
+
+            <button type="submit">Next Question</button>
+        </form>
+    </main>
+</body>
+</html>
+
