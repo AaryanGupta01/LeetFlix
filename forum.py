@@ -437,8 +437,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     <nav class="w-full bg-[#161723] p-4 shadow-lg fixed top-0 z-50">
         <div class="flex justify-between items-center px-4 max-w-7xl mx-auto">
             <a href="#" class="flex items-center space-x-2">
-                <div class="w-6 h-6 bg-[#e50914] rounded-sm"></div>
-                <span class="text-2xl font-bold text-white">LEET<span class="text-[#e50914]">FLIX</span></span>
+                
+                <span class="text-2xl font-bold text-[#f5c518] ">LEET<span class="text-[#e50914]">FLIX</span></span>
             </a>
             <div id="userIdDisplay" class="text-sm text-gray-400 hidden sm:block"></div>
         </div>
