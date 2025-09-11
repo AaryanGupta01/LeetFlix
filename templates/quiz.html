@@ -393,13 +393,13 @@ button[type="submit"]:hover {
         <div class="quiz-header">
             <a href="/" class="home-button">Home</a>
             <h1>{{show_name}} Trivia</h1>
-            <h2>Question {{ question.question_id }}</h2>
+            <h2>Question {{ question.qno }}</h2>
         </div>
         
         <p class="question-text">{{ question.text }}</p>
 
         <form method="POST" class="quiz-form">
-            <input type="hidden" name="question_id" value="{{ question.question_id }}">
+            <input type="hidden" name="qno" value="{{ question.qno }}">
             
             <div class="options-container">
                 {% for opt in question.options %}

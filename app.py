@@ -450,6 +450,7 @@ class Question(db.Model):
     __tablename__ = 'questions'
     question_id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(500), nullable=False)
+    qno = db.Column(db.Integer, nullable=False)
     show_name = db.Column(db.String(255), nullable=False)
     season = db.Column(db.Integer, nullable=False)
     options = db.relationship('Option', backref='question', lazy=True)
