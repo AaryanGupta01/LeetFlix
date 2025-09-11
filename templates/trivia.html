@@ -57,7 +57,7 @@
     }
 
     .navbar h1 .brand-leet {
-      color: #ffffff;
+      color: #f5c518; /* LeetCode Yellow */
     }
 
     .navbar .btn {
@@ -109,7 +109,6 @@
       padding: 40px;
     }
     
-    /* UPDATED: Content area is now a grid */
     .content {
       max-width: 1200px;
       margin: 0 auto;
@@ -120,13 +119,12 @@
       animation-fill-mode: backwards;
     }
 
-    /* UPDATED: Trivia Card Styling */
     .trivia-card {
       background: rgba(30, 30, 46, 0.8);
       border-radius: 12px;
-      overflow: hidden; /* To keep the image corners rounded */
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex; /* Using flex to control visibility */
+      display: flex;
       flex-direction: column;
     }
     
@@ -152,7 +150,7 @@
     .card-body h4 {
       margin: 0;
       font-size: 1rem;
-      flex-grow: 1; /* Allows title to take available space */
+      flex-grow: 1;
     }
 
     .start-quiz-btn {
@@ -163,7 +161,7 @@
       border-radius: 8px;
       font-size: 0.9rem;
       font-weight: 700;
-      white-space: nowrap; /* Prevents button text from wrapping */
+      white-space: nowrap;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -208,47 +206,46 @@
     <input type="text" id="search-bar" placeholder="Search for a show...">
     <select id="genre-filter">
       <option value="all">All Genres</option>
-      <option value="sci-fi">Sci-Fi</option>
+      <option value="sitcom">Sitcom</option>
       <option value="thriller">Thriller</option>
-      <option value="drama">Drama</option>
+      <option value="sci-fi">Sci-Fi</option>
     </select>
   </div>
 
 
   <!-- Page Layout -->
   <div class="container">
-    <!-- Main Trivia Content -->
     <div class="content">
-      <!-- Sample Trivia Card 1 -->
+      <!-- Modern Family Card -->
+      <div class="trivia-card" data-genre="sitcom" data-title="Modern Family">
+          <img src="{{ url_for('static', filename='images/mf.jpg') }}" alt="Modern Family Poster">
+          <div class="card-body">
+            <h4>Modern Family</h4>
+            <a href="{{ url_for('seasons_page', show_name='Modern Family') }}" class="start-quiz-btn">Start Quiz</a>
+          </div>
+      </div>
+      <!-- Friends Card -->
+      <div class="trivia-card" data-genre="sitcom" data-title="Friends">
+          <img src="{{ url_for('static', filename='images/friends.jpg') }}" alt="Friends Poster">
+          <div class="card-body">
+            <h4>Friends</h4>
+              <a href="{{ url_for('seasons_page', show_name='Friends') }}" class="start-quiz-btn">Start Quiz</a>
+          </div>
+      </div>
+      <!-- Squid Game Card -->
+      <div class="trivia-card" data-genre="thriller" data-title="Squid Game">
+          <img src="{{ url_for('static', filename='images/sg.jpg') }}" alt="Squid Game Poster">
+          <div class="card-body">
+            <h4>Squid Game</h4>
+            <a href="{{ url_for('quiz', show='Squid Game', season=1) }}" class="start-quiz-btn">Start Quiz</a>
+          </div>
+      </div>
+       <!-- Stranger Things Card -->
       <div class="trivia-card" data-genre="sci-fi" data-title="Stranger Things">
           <img src="{{ url_for('static', filename='images/stranger.jpg') }}" alt="Stranger Things Poster">
           <div class="card-body">
             <h4>Stranger Things</h4>
-            <a href="{{ url_for('quiz') }}" class="start-quiz-btn">Start Quiz</a>
-          </div>
-      </div>
-      <!-- Sample Trivia Card 2 -->
-      <div class="trivia-card" data-genre="thriller" data-title="Modern Family">
-          <img src="{{ url_for('static', filename='images/mf.jpg') }}" alt="Modern Family Poster">
-          <div class="card-body">
-            <h4>Modern Family</h4>
-            <a href="{{ url_for('quiz') }}" class="start-quiz-btn">Start Quiz</a>
-          </div>
-      </div>
-      <!-- Sample Trivia Card 3 -->
-      <div class="trivia-card" data-genre="drama" data-title="Squid Game">
-          <img src="{{ url_for('static', filename='images/sg.jpg') }}" alt="Squid Game Poster">
-          <div class="card-body">
-            <h4>Squid Game The Ultimate Challenge</h4>
-            <a href="{{ url_for('quiz') }}" class="start-quiz-btn">Start Quiz</a>
-          </div>
-      </div>
-      <!-- Sample Trivia Card 4 -->
-      <div class="trivia-card" data-genre="thriller" data-title="Breaking Bad">
-          <img src="{{ url_for('static', filename='images/bb.jpg') }}" alt="Breaking Bad Poster">
-          <div class="card-body">
-            <h4>Breaking Bad</h4>
-            <a href="{{ url_for('quiz') }}" class="start-quiz-btn">Start Quiz</a>
+            <a href="{{ url_for('seasons_page', show_name='Stranger Things') }}" class="start-quiz-btn">Start Quiz</a>
           </div>
       </div>
     </div>
@@ -277,7 +274,7 @@
           const genreMatches = (selectedGenre === 'all' || genre === selectedGenre);
 
           if (titleMatches && genreMatches) {
-            card.style.display = 'flex'; // Use 'flex' to show cards
+            card.style.display = 'flex';
           } else {
             card.style.display = 'none';
           }
