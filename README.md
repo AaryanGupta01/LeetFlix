@@ -1,27 +1,45 @@
-🚀 LeetFlix - Level Up Your BingeWatching Journey
-Welcome to LeetFlix – your one-stop platform to track Binge-Watching progress, compete on leaderboards, engage in discussions, and flaunt those green contribution bubbles like a boss. Inspired by LeetCode and Netflix, but cooler 😎
+# 🚀 LeetFlix - Level Up Your BingeWatching Journey
 
-🌟 Features
-✅ User Login / Register System
-✅ Sleek UI / UX built for Binge-Watchers vibes
-✅ Robust Database for user data and activity tracking
-✅ Flask-powered backend to handle requests
-✅ Dynamic Leaderboard showing top users 🏆
-✅ Discussion Forum for users to connect, ask questions, and share ideas 💬
-⚡ Tech Stack
-Frontend: HTML | CSS | JavaScript
-Backend: Flask (Python)
-Database: MySQL
-🚧 What’s Next
-✨ More gamification features
-✨ Profile customization
-✨ Github/Leetcode inspired annual contribution heatmap
-✨ Challenges & badges
-✨ Dark mode
-🚀 How to Run Locally
-Clone the repo:
-git clone https://github.com/your-username/leetflix.git
-cd leetflix
+Welcome to **LeetFlix** – your one-stop platform to track Binge-Watching progress, compete on leaderboards, engage in discussions, and flaunt those green contribution bubbles like a boss. Inspired by LeetCode and Netflix, but cooler 😎
+
+---
+
+## 🌟 Features
+
+- ✅ User Login / Register System  
+- ✅ Sleek UI / UX built for Binge-Watchers vibes  
+- ✅ Robust Database for user data and activity tracking  
+- ✅ Flask-powered backend to handle requests  
+- ✅ Dynamic Leaderboard showing top users 🏆  
+- ✅ Discussion Forum for users to connect, ask questions, and share ideas 💬
+
+---
+
+## ⚡ Tech Stack
+
+- **Frontend:** HTML | CSS | JavaScript  
+- **Backend:** Flask (Python)  
+- **Database:** MySQL 
+
+---
+
+## 🚧 What’s Next
+
+- ✨ More gamification features  
+- ✨ Profile customization
+- ✨ Github/Leetcode inspired annual contribution heatmap
+- ✨ Challenges & badges  
+- ✨ Dark mode
+
+---
+
+## 🚀 How to Run Locally
+
+1. Clone the repo:  
+   ```bash
+   git clone https://github.com/your-username/leetflix.git
+   cd leetflix
+````
 
 2. Install dependencies:
 
